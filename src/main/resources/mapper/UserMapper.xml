@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="shenzhen.teamway.tms9000.portal.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="shenzhen.teamway.tms9000.portal.domain.User" >
+    <id column="id" property="id" />
+    <id column="name" property="userName" />
+    <id column="password" property="password" />
+    <id column="group_id" property="groupId" />
+    <id column="role_id" property="roleId" />
+    <id column="create_time" property="createTime"/>
+    <id column="update_time" property="updateTime" />
+    <id column="password_level" property="passwordLevel" />
+    <id column="password_begin_time" property="passwordBeginTime" />
+    <id column="password_status" property="passwordStatus" />
+    <id column="status" property="status" />
+    <id column="creator" property="creator" />
+  </resultMap>
+  
+  	<sql id="LogonUser_Column_List">
+		 id, name,password,group_id,role_id,create_time,update_time,password_level,password_begin_time,password_status,status,creator
+	</sql>
+	
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+      and name = #{userName,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="shenzhen.teamway.tms9000.portal.domain.Group" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (userName)
+    values (#{name,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+ 	 select
+ 	 <include refid="LogonUser_Column_List" />
+    from user
+  </select>
+  <select id="findUserByUserName"  resultMap="BaseResultMap"  parameterType="java.lang.String">
+  		select 
+  		 <include refid="LogonUser_Column_List" />
+  	    from user
+		where 
+  	    	name = #{userName}
+  	    
+  </select>
+  <select id="getUserMatch" resultType="java.lang.Integer">
+  	select count(*) from user 
+  	where 
+  	name = #{userName} 
+  	and password = #{password}
+  </select>
+</mapper>

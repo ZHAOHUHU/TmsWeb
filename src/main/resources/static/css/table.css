@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	background: #ffffff;
+	font-size: 12px
+}
+
+h3 {
+	color: #000;
+	padding-left: 10px;
+	height: 20px
+}
+
+.f {
+	margin: 0 10px; /*border:1px solid #ccc; background:#fff;*/
+	margin-bottom: 20px;
+}
+
+.f table {
+	border: 1px solid #A2B3CC;
+	table-layout:fixed;  /*表格加换行*/
+	word-break:break-all
+}
+
+.f th {
+	width: 450px;
+	text-align:right;
+	color: #777;
+	height: 30px;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	padding-left: 5px;
+	background: #E4EDF8
+}
+
+.f td {
+	width: 450px;
+	text-align: rigth;
+	color: #777;
+	height: 30px;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	padding-left: 5px;
+	background: #E4EDF8;
+	word-wrap: break-word;
+}
+
+.scroll {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	/*overflow: hidden;*/
+	position: relative; /* for IE6,IE7*/ 
+	/*border: 1px dashed #CCC;*/
+}
+
+ul.scroll li {
+	float: left;
+	display: none;
+}
+
+ul.scroll li.current {
+	display: block;
+}
+
+#pic {
+	width: 800px;
+	overflow: hidden;
+	/*position: absolute;*/
+	*position:relative;
+	margin:0px auto;
+}
+
+a.btn_prev, a.btn_next { display:block; width:30px; height:55px; overflow:hidden; margin-top:200px; background-image:url(../../mms/images/pic_08.gif); text-indent:-9999px; outline:none; hide-focus:expression(this.hideFocus=true); }
+a.btn_prev { float:left; margin-left:2px!important; margin-left:1px; background-position:0 -350px; }
+a.btn_next { float:right; margin-right:2px!important; margin-right:1px; background-position:-100px -350px;}
+a.btn_prev:hover { background-position:-200px -350px; }
+a.btn_next:hover { background-position:-300px -350px; }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head  th:include= "common  :: common">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>铁越电气门户平台</title>
+<script src="@{/js/updatePwd.js}"></script>
+</head>
+<body class="easyui-layout">
+	<div id="divHeader"
+		data-options="region:'north',border:false,href:'redirect.html?page=header'"></div>
+	<div id="divMenuBar" style="background-color:#535353"
+		data-options="region:'west',split:false,collapsed:false,title:'菜单栏'">
+		<div id="menu" class="easyui-accordion" data-options="selected:false" >
+		</div>
+	</div>
+    <div id="divFooter"
+		data-options="region:'south',border:false,href:'redirect.html?page=footer'"></div> 
+	<div id="mainPanle" data-options="region:'center',title:false">
+		<div id="tabs" class="easyui-tabs" data-options="fit:true,border:false">
+			<div id="divTitleBar" title=""
+				data-options="href:'redirect.html?page=main'"></div>
+		</div>
+	</div>
+</body>
+</html>

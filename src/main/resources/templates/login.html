@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>深圳铁越电气门户</title>
+  		<script th:src="@{/js/jquery-1.7.2.min.js}"></script>
+		<script th:src="@{/easyui/jquery.easyui.min.js}"></script>
+		<link th:href="@{/easyui/themes/gray/easyui.css}" rel="stylesheet" />
+		<link th:href="@{/easyui/themes/icon.css}" rel="stylesheet" />
+		<link th:href="@{/css/login.css}" rel="stylesheet" type="text/css" />
+		<script th:src="@{/easyui/local/easyui-lang-zh_CN.js}"></script>
+		<script th:src="@{/js/login.js}"></script>
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+			$(document).ready(function() {
+				var msg = /*[[${#httpServletRequest.getParameter('msg')}]]*/
+					if(msg != "" && msg != null) {
+						$.messager.alert('提示', msg, 'info');
+					}
+			});
+		/*]]>*/
+		</script>	
+</head>
+<body>
+    <div class="name">深圳铁越电气门户<br>V1.0</br></div>
+		<div class="login_box">			      
+            <form id="myForm" method="post" action="/protalLogin.html" th:action="@{/protalLogin.html}">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span id="message" style="color: red;"></span>
+				<p style="margin-top:40px;">
+					户 &nbsp;&nbsp;名：
+					<input id="userName" name="userName" type="text"  th:onkeydown="'javascript:on_return();'" ></input>
+				</p>
+					
+				<p>
+					密 &nbsp;&nbsp;码：
+					<input id="userPwd" name="password" type="password" th:onkeydown="'javascript:on_return();'" ></input>
+				</p>
+				<p >
+					验证码：
+					<input id="verifyCode" name="verifyCode" type="text" style="width:100px" th:onkeydown="'javascript:on_return();'" />
+					<div id="checkcode">
+					 	<img id="getVerifyCode" src="/verifyCodeServlet" th:onclick="'javascript:getCode();'" />
+					</div>
+				</p>
+				<div class="login_button">
+					<a id="btnEp" type="button" href="javascript:void(0)" th:onclick="'javascript:login();'">
+					&nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;
+					</a>
+				</div>
+				<div style="display:none;">
+ 					<input type="hidden" id="basePath" name="basePath" th:value="${contextPath} " /> 
+ 					<p th:text="${#httpServletRequest.getContextPath()}"></p>
+				</div>
+			</form>
+			<div class="instruction">版权所有&nbsp;&nbsp;@铁越电气有限公司</div>
+		</div>
+		<div class="title"></div>
+</body>
+</html>

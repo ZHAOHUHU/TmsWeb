@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head  th:include= "common  :: common">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>铁越电气门户平台</title>
+</head>
+<body>
+    <div style="background:#3EC1F2;height:100px;">
+        <div>
+        	<div style="float:left;padding:20px;">
+        		<img th:src="@{/images/logo2.png}" />
+        	</div>
+            <div style="float:left;margin-left:10px;padding: 40px 0;align:center">
+                <P style="color:#FFFFFF">欢迎使用铁越电气门户门户系统</P>
+            </div>
+            <div class="contact" style="float:right;padding:30px 0 0 0;">
+                <div class="prompt">
+                    <span></span>
+                </div>
+                <div class="headerMenu">
+                    <ul>
+                        <li><a href="#" style="width:102px;height:30px;color:#FFFFFF;background: url('/images/btn_logout.png') no-repeat center;" 
+                        class="easyui-linkbutton" data-options="plain:true" onclick="logout();">安全退出</a></li>
+                        <li><a href="#" style="color:#FFFFFF" class="easyui-linkbutton" data-options="plain:true" onclick="openUpdatePwd()">更改密码</a></li>
+                        <li><a href="#" style="color:#FFFFFF" class="easyui-linkbutton" data-options="plain:true" onclick="openMyInfo()">个人信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

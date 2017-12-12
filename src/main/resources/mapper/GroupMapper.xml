@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="shenzhen.teamway.tms9000.portal.mapper.GroupMapper" >
+  <resultMap id="BaseResultMap" type="shenzhen.teamway.tms9000.portal.domain.Group" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from group
+    where id = #{id,jdbcType=INTEGER}
+      and name = #{name,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="shenzhen.teamway.tms9000.portal.domain.Group" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into group (name)
+    values (#{name,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name
+    from group
+  </select>
+</mapper>
