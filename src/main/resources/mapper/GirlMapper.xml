@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shenzhen.teamway.tms9000.portal.mapper.GirlMapper">
+    <!--建立一对多的关系-->
+    <!--一的一端-->
+    <resultMap id="account" type="shenzhen.teamway.tms9000.portal.domain.Account">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="DOUBLE"/>
+        <!--多的一端-->
+        <!--property的值是在bean层将它们建立关系时设的值，这里的girlLists就是在account类里面集合的名字
+           private List<Girl> girlLists =new ArrayList<>();
+        -->
+        <collection property="girlLists" ofType="shenzhen.teamway.tms9000.portal.domain.Girl">
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="username" property="username" jdbcType="VARCHAR"/>
+            <result column="password" property="password" jdbcType="VARCHAR"/>
+            <result column="fid" property="fid" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+    <!-- List<Girl> selectById(int id);-->
+    <select id="selectById" resultType="shenzhen.teamway.tms9000.portal.domain.Account">
+       select girl.username,account.name from girl,account where account.id=girl.fid and account.id=#{id}
+    </select>
+
+
+
+
+
+    <resultMap id="listGirl" type="shenzhen.teamway.tms9000.portal.domain.Girl">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+    <select id="">
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from girl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="shenzhen.teamway.tms9000.portal.domain.Girl">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+        insert into girl (username, password)
+        values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="shenzhen.teamway.tms9000.portal.domain.Girl">
+    update girl
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+    <!--  Girl selectByPrimaryKey(Girl girl);根据一个用户名和密码查询出来的 结果-->
+    <select id="selectByPrimaryKey" resultType="shenzhen.teamway.tms9000.portal.domain.Girl">
+    select  username, password
+    from girl
+    where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+  </select>
+</mapper>

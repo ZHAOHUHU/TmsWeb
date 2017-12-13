@@ -1,6 +1,6 @@
 
 
-package shenzhen.teamway.tms9000;
+package shenzhen.teamway.tms9000.portal;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,9 +9,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@ServletComponentScan
 @SpringBootApplication
-@EnableTransactionManagement
+//@EnableTransactionManagement
 /*
 有这个注解就不需要在每个mapper类中添加mapper注解
  */
@@ -25,5 +24,10 @@ public class TMS9000Portal
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(TMS9000Portal.class);
     }
-    
+
 }
+
+
+
+//@ServletComponentScan
+

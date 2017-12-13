@@ -66,6 +66,7 @@
         <javaClientGenerator targetPackage="shenzhen.teamway.tms9000.portal.mapper" targetProject="src/main/java"  type="XMLMAPPER">
         	<property name="enableSubPackages" value="true"/>
 		</javaClientGenerator>
+
 		<!-- 要生成的表 tableName是数据库中的表名或视图名(可以用%号匹配所有表)  domainObjectName是实体类名
 			可选：
 	        1，schema：数据库的schema；
@@ -85,6 +86,12 @@
 	        15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers
 		-->
         <table tableName="girl" enableSelectByExample ="true" enableDeleteByExample ="true" enableCountByExample ="true" enableUpdateByExample ="true">
+            <!--mysql 配置-->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!--oracle 配置-->
+            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
+        </table>
+        <table tableName="account" enableSelectByExample ="true" enableDeleteByExample ="true" enableCountByExample ="true" enableUpdateByExample ="true">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->
