@@ -1,6 +1,6 @@
 
 
-package shenzhen.teamway.tms9000.portal;
+package shenzhen.teamway.tms9000;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @SpringBootApplication
 @EnableTransactionManagement
+/*
+有这个注解就不需要在每个mapper类中添加mapper注解
+ */
 @MapperScan("shenzhen.teamway.tms9000.portal.mapper")
 public class TMS9000Portal
 {

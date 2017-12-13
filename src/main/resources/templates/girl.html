@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Insert title here</title>
+    <script th:src="@{/js/jquery-1.7.2.min.js}"></script>
+    <script src="/js/ok.js"></script>
+    <!-- 模板 -->
+</head>
+<body>
+<form id="myForm" method="post" action="/girl">
+
+    姓名： <input id="username" name="username" type="text"></input><br></br>
+    密码： <input id="password" name="password" type="password"></input><br></br>
+    提交: <input id="submit" name="submit" type="submit" value="OK"></input><br></br>
+    这是一个按钮：
+    <button type="button" id="body" onclick="goback()"></button>
+</form>
+
+
+</body>
+
+</html>
